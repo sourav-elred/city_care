@@ -7,9 +7,9 @@ class IncidentList extends StatelessWidget {
   Widget build(BuildContext context) {
     return ListView.builder(
       itemCount: 10,
-      itemBuilder: (context, index) {
-        return ListTile(title: Text("Item $index"));
-      },
+      itemBuilder: (context, index) => ListTile(
+        title: Text("Item ${index + 1}"),
+      ),
     );
   }
 }

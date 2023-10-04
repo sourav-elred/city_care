@@ -8,8 +8,8 @@ class ReportIncidentViewModel extends ChangeNotifier {
 
   final _apiService = ApiService();
 
-  Future<void> saveIncident() async {
+  void saveIncident() async {
     final incident = Incident(title: title, description: description);
-    await _apiService.saveIncidentInDB(incident);
+    _apiService.saveIncidentInDB(incident);
   }
 }

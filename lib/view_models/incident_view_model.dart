@@ -1,15 +1,15 @@
-import 'package:city_care/models/incident.dart';
+// import 'package:city_care/models/incident.dart';
 
-class IncidentViewModel {
-  final Incident incident;
+// class IncidentViewModel {
+//   final Incident incident;
 
-  IncidentViewModel({required this.incident});
+//   IncidentViewModel({required this.incident});
 
-  String get title {
-    return incident.title;
-  }
+//   String get title {
+//     return incident.title;
+//   }
 
-  String get description {
-    return incident.description;
-  }
-}
+//   String get description {
+//     return incident.description;
+//   }
+// }

@@ -1,7 +1,8 @@
-import 'dart:convert';
+import 'dart:io';
 
 import 'package:city_care/models/incident.dart';
 import 'package:dio/dio.dart';
+import 'package:path/path.dart';
 
 class ApiService {
   final _dio = Dio();
@@ -19,12 +20,18 @@ class ApiService {
   }
 
   void saveIncidentInDB(Incident incident) async {
-    const url = "https://vast-savannah-75068.herokuapp.com/incidentsNoImage";
+    const url = "https://vast-savannah-75068.herokuapp.com/incidents";
 
-    await _dio.post(
-      url,
-      data: {"title": incident.title, "description": incident.description},
-      options: Options(contentType: "application/x-www-form-urlencoded"),
-    );
+    File file = File(incident.imageURL);
+    final filename = basename(file.path.replaceAll(" ", ""));
+
+    FormData formData = FormData.fromMap({
+      "title": incident.title,
+      "description": incident.description,
+      "image":
+          await MultipartFile.fromFile(incident.imageURL, filename: filename)
+    });
+
+    await _dio.post(url, data: formData);
   }
 }
